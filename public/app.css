@@ -1,0 +1,52 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-image: url("../public/cashbg.png");
+  color: #000;
+  margin-top: 0px;
+  font-size: 16px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.navbar-nav li {
+  position: relative;
+}
+
+.navbar-nav li:hover span {
+  display: block;
+  position: absolute;
+}
+
+.navbar {
+  margin-bottom: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  border-bottom: #10735f solid 5px;
+}
+
+.card {
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 120px;
+  text-align: center;
+}
+
+.card-header {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.card-body {
+  font-weight: bold;
+}
+
+.card-title {
+  font-size: 30px;
+  font-weight: lighter;
+}
