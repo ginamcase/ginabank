@@ -25,40 +25,36 @@ function NavBar(props){
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
        
-          <li className="nav-item">
-              <a  href='/' className="nav-link" 
-              aria-current="page"
-              > Home </a>
-              <span>Return Home</span>
+          <li className="nav-item"  data-toggle="tooltip" title="Return Home">
+              <a  href='/' className="nav-link" aria-current="page"> Home </a>              
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#/CreateAccount/">Create Account</a>
-            <span>Create a Bank Account</span>
+
+          <li className="nav-item" data-toggle="tooltip" title="Open your Bank Account">
+            <a href="#/CreateAccount/" className="nav-link" >Create Account</a>
           </li>
-          <li className="nav-item">
+
+          <li className="nav-item" data-toggle="tooltip" title="Log In to your Account">
             <a className="nav-link" href="#/login/">Login</a>
-            <span>Account Login</span>
           </li>
           
-          <li className="nav-item">
+          <li className="nav-item" data-toggle="tooltip" title="Make a Deposit">
             <a className="nav-link" href="#/deposit/">Deposit</a>
-            <span>Make a Deposit</span>
           </li>
-          <li className="nav-item">
+
+          <li className="nav-item" data-toggle="tooltip" title="Make a Withdrawal">
             <a className="nav-link" href="#/withdraw/">Withdraw</a>
-            <span>Make a Withdrawal</span>
           </li>
-          <li className="nav-item">
+
+          <li className="nav-item" data-toggle="tooltip" title="Check your Balance">
             <a className="nav-link"   href="#/balance/">Balance</a>
-            <span>View Balance</span>
           </li>
-          <li className="nav-item">
+
+          <li className="nav-item" data-toggle="tooltip" title="View All Data">
             <a className="nav-link" href="#/alldata/">AllData</a>
-            <span>View All Data</span>
           </li>       
-          <li className="nav-item">
+
+          <li className="nav-item" data-toggle="tooltip" title="Log Out of your Account">
             <a className="nav-link" href="#/login/" >Logout</a>
-            <span>Log Out</span>
           </li>       
              
         </ul>

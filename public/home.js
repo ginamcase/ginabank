@@ -6,7 +6,7 @@ function Home() {
       bgcolor="success"
       txtcolor="white"
       header="BadBank"
-      title="Welcome to BadBank"
+      title="Welcome to BadBank!"
       text="The Most Hackable Bank on Earth"
       body={
         <>
@@ -17,9 +17,7 @@ function Home() {
             alt="Banking picture"
           />
           <br />
-          <button type="submit" className="btn btn-dark">
-
-          </button>
+          
         </>
       }
     />
