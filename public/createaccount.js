@@ -36,8 +36,22 @@ function CreateAccount() {
     if (!validate(name, "name")) return;
     if (!validate(email, "email")) return;
     if (!validPassword(password, "password")) return;
-    ctx.users.push({ name, email, password, balance: 0 });
-    console.log(ctx);
+    const auth  = firebase.auth();
+		const promise = auth.createUserWithEmailAndPassword(email,password);
+		promise.catch(e => {
+            e.message ? setShow(true): setShow(false)
+            setStatus(e.message)
+            console.log(e.message)});
+
+       const url = `/account/create/${name}/${email}/${password}`;
+       (async () => {
+        var res = await fetch(url, {method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        mode: 'cors' });
+        var data = await res.json();
+        console.log(data);
+        ctx.user.email = email;
+        ctx.user.balance = 0;
+   })();
     setShow(false);
   }
 

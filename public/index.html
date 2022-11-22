@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BadBank React</title>
+    <title>BadBank</title>
 
-   <!-- Firebase -->
+   <!-- Firebase always first-->
    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script> 
 
@@ -11,19 +11,68 @@
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">    -->
+
      <!-- don't use this in production: -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <link rel="stylesheet" href="App.css" />
+    <link rel="stylesheet" href="app.css" />
 
   </head>
   <body>
-    <!-- we will put our teact component inside this div -->
+    <!-- we will put our react component inside this div -->
 
     <div id="root"></div>
 
-   
+    <!-- firebase goes here-->
+    <script defer crossorigin type="module">
+     
+      const firebaseConfig = {
+        apiKey: "AIzaSyCV2c-06qxcHZj8XrKRv21k8sucfqBSw1I",
+        authDomain: "ginabank2.firebaseapp.com",
+        projectId: "ginabank2",
+        databaseURL: "https://ginabank2-default-rtdb.firebaseio.com",
+        storageBucket: "ginabank2.appspot.com",
+        messagingSenderId: "721571637017",
+        appId: "1:721571637017:web:4d76a071f7fdb2a3728788"
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+
+      firebase.auth().signOut();
+
+      firebase.auth().onAuthStateChanged((firebaseUser) => {
+        if (firebaseUser) {
+          console.log("Firebase Logged-In: " + firebaseUser.email);
+
+          document.getElementById("loggedinuser").innerText =
+            firebaseUser.email;
+          document.getElementById("activeuser").innerText = firebaseUser.email;
+          document.getElementById("depositlink").className = "nav-item";
+          document.getElementById("withdrawlink").className = "nav-item";
+          document.getElementById("balancelink").className = "nav-item";
+          document.getElementById("logoutlink").className = "nav-item";
+          // document.getElementById("transactionslink").className = "nav-item";
+          document.getElementById("alldatalink").className = "nav-item d-none";
+          document.getElementById("createaccountlink").className = "nav-item d-none";
+          document.getElementById("loginlink").className = "nav-item d-none";
+          
+        } else {
+          console.log("Firebase Logged-Out");
+          document.getElementById("depositlink").className = "nav-item d-none";
+          document.getElementById("withdrawlink").className = "nav-item d-none";
+          document.getElementById("balancelink").className = "nav-item d-none";
+          document.getElementById("logoutlink").className = "nav-item d-none";
+          // document.getElementById("transactionslink").className = "nav-item d-none";
+          document.getElementById("alldatalink").className = "nav-item d-none";
+          document.getElementById("createaccountlink").className = "nav-item nav-link me-auto";
+          document.getElementById("loginlink").className = "nav-item nav-link me-auto";
+        }
+      });
+    </script>
+
+
+
 
     <!-- load jquery & bootstrap for responsive navbar -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -38,18 +87,21 @@
    
 
     <!-- load our react component. -->
-    
-    <script src="context.js" defer type="text/babel"></script>
     <script src="navbar.js" defer type="text/babel"></script>
+    <script src="context.js" defer type="text/babel"></script>
+
     <script src="createaccount.js" defer type="text/babel"></script>
-    <!-- <script src="login.js" defer type="text/babel"></script> -->
+    <script src="login.js" defer type="text/babel"></script>
     <script src="deposit.js" defer type="text/babel"></script>
     <script src="withdraw.js" defer type="text/babel"></script>
-    <!-- <script src="balance.js" defer type="text/babel"></script> -->
+    <!--<script src="transactions.js" defer type="text/babel"></script>-->
+    <script src="balance.js" defer type="text/babel"></script> 
     <script src="alldata.js" defer type="text/babel"></script>
+    <!--<script src="logout.js" defer type="text/babel"></script> -->
+
+
     <script src="home.js" defer type="text/babel"></script>
     <script src="index.js" defer type="text/babel"></script>
-    <!-- <script src="logout.js" defer type="text/babel"></script> -->
 
       
 
