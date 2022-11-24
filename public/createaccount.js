@@ -45,14 +45,17 @@ function CreateAccount() {
 
        const url = `/account/create/${name}/${email}/${password}`;
        (async () => {
-        var res = await fetch(url, {method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        var res = await fetch(url, {method: 'POST', 
         mode: 'cors' });
         var data = await res.json();
         console.log(data);
         ctx.user.email = email;
         ctx.user.balance = 0;
+        let activeuser = document.getElementById('activeuser');
+        activeuser.innerText = ctx.user.email;
    })();
     setShow(false);
+    setStatus('');
   }
 
   function clearForm() {
@@ -60,6 +63,7 @@ function CreateAccount() {
     setEmail("");
     setPassword("");
     setShow(true);
+    setButton(false);
   }
 
   return (
