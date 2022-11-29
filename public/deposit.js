@@ -6,8 +6,10 @@ function Deposit() {
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
   const ctx = React.useContext(UserContext);
-  let userBalance = ctx.users[ctx.users.length - 1].balance;
-  let userName = ctx.users[ctx.users.length - 1].name;
+  const [users, setUsers] = React.useState([]);
+  let userBalance = ctx.users[0].balance;
+  let userName = ctx.users[0].name;
+
 
   function validate(number) {
     if (isNaN(number) || number < 0) {
@@ -23,9 +25,32 @@ function Deposit() {
     setBalance(userBalance + amount);
     setStatus("");
 
-    ctx.users[ctx.users.length - 1].balance += Number(amount);
+    ctx.users[0].balance += Number(amount);
     setShow(false);
-  }
+console.log("before");
+    
+  // React.useEffect(() => {
+  //   fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setUsers(data);
+  //       console.log("after");
+  //     });
+  // }, []);
+  fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
+  .then(response => response.text())
+  .then(text => {
+    try {
+      const data = JSON.parse(text);
+      setStatus(JSON.stringify(data.amount));
+      console.log('JSON:', data);
+    } catch(err) {
+      props.setStatus('Deposit failed')
+      console.log('err:', text);
+    }
+  });
+
+}
 
   function clearForm() {
     setDeposit("");

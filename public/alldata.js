@@ -1,9 +1,34 @@
 
-
-function AllData() {
+function AllData(){
+  const [data, setData] = React.useState('');
   const ctx = React.useContext(UserContext);
+  const [users, setUsers] = React.useState([]);
+ 
+  React.useEffect(() => {
+   //fetch all acounts from API
+   fetch('/account/all')
+     .then(response => response.json())
+     .then(data => {
+       console.log('last user created: ', data[data.length - 1]); 
+       setData(JSON.stringify(data));
+       setUsers(data);
+     })
+  }, []);
 
-  const displayUsers = ctx.users.map((user) => {
+// function AllData() {
+//   const ctx = React.useContext(UserContext);
+//   const [users, setUsers] = React.useState([]);
+
+//   React.useEffect(() => {
+//     fetch("/account/all")
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setUsers(data);
+//       });
+//   }, []);
+
+
+  const displayUsers = users?.map((user) => {
     return (
       <tr key={user}>
         <td>{user.name}</td>

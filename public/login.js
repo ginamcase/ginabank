@@ -36,13 +36,14 @@ function Login() {
           }
           if (data.response.redirected)
           {
-            ctx.user.name = data.name;
-            ctx.user.email = data.email;
-            ctx.user.password = data.password;
-            ctx.user.balance = data.balance;
+            ctx.users[0].name = data.name;
+            ctx.users[0].email = data.email;
+            ctx.users[0].password = data.password;
+            ctx.users[0].balance = data.balance;
             let activeuser = document.getElementById('activeuser');
-            activeuser.innerText = ctx.user.email;
+            activeuser.innerText = data.email;
             setShow(false);
+            console.log("test");
           }
           else
           {
@@ -51,6 +52,9 @@ function Login() {
               method: 'POST'})
               .then((data) => console.log(data))
             setShow(false);
+          
+            // let activeuser = document.getElementById('activeuser');
+            // activeuser.innerText = data.email;
           }
         })();
   
@@ -82,19 +86,22 @@ function Login() {
             const url = `/account/login/${emailinput.value}/${passwordinput.value}`;
             var res = await fetch(url, { method: 'get'});
             var data = await res.json();
+            console.log(data);
+            console.log(ctx);
+
             if (data.error) {
               console.log(data.error);
               setStatus('Error: ' + data.error);
             }
             else
             {
-              ctx.user.name = data.name;
-              ctx.user.email = data.email;
-              ctx.user.password = data.password;
-              ctx.user.balance = data.balance;
+              ctx.users[0].name = data.name;
+              ctx.users[0].email = data.email;
+              ctx.users[0].password = data.password;
+              ctx.users[0].balance = data.balance;
               setShow(false);
               let activeuser = document.getElementById('activeuser');
-              activeuser.innerText = ctx.user.email;
+              activeuser.innerText = data.email;
             }
           })();
             })

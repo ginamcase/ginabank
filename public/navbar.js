@@ -1,9 +1,38 @@
 function NavBar(props){
   const ctx = React.useContext(UserContext); 
+ // let user = ctx.user;
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState('');
   
+// function handleLogout() {
+//   firebase.auth().signOut();
+//   setShow(false);
+//   user.email = null;
+//   user.password = null;
+//   user.balance = null;
+//   user.name = null;
+  const activeuser = document.getElementById('activeuser');
+  // activeuser.innerText = "Log In";
 
+// }
+
+function handleLogout() {
+  firebase.auth().signOut()
+      .then(() => {
+          console.log('Logged out of Firebase');
+          setShow(false);
+          alert('You have successfully logged out.');
+          window.location.reload(false);
+          user.email = null;
+          user.password = null;
+          user.balance = null;
+          user.name = null;
+        console.log(user);
+      })
+      .catch(function(error){
+          console.log(error)
+      })
+ }
 
 
 
@@ -45,21 +74,21 @@ function NavBar(props){
             <a className="nav-link" href="#/withdraw/">Withdraw</a>
           </li>
 
-          <li className="nav-item" data-toggle="tooltip" title="Check your Balance">
+          {/* <li className="nav-item" data-toggle="tooltip" title="Check your Balance">
             <a className="nav-link"   href="#/balance/">Balance</a>
-          </li>
+          </li> */}
 
           <li className="nav-item" data-toggle="tooltip" title="View All Data">
             <a className="nav-link" href="#/alldata/">AllData</a>
           </li>       
 
           <li className="nav-item" data-toggle="tooltip" title="Log Out of your Account">
-            <a className="nav-link" href="#/login/" >Logout</a>
+            <a className="nav-link" href="#/login/" onClick={handleLogout}>Logout</a>
           </li>       
              
         </ul>
         </div>
-     
+        <a href="#/login/" id="activeuser" className="navbar-text">Log In</a>
     </nav>
     </>
   );
