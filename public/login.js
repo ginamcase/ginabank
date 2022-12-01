@@ -61,17 +61,17 @@ function Login() {
         fetch(`/account/create/${user.displayName}/${user.email}/${credential}`, {
           method: 'POST'})
           .then((data) => console.log(data))
-        // ...
+        
         
       }).catch((error) => {
-        // Handle Errors here.
+        // Handle Errors hee.
         var errorCode = error.code;
         var errorMessage = error.message;
         // The email of the user's account used.
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
+       
 
       });
       
@@ -110,53 +110,34 @@ function Login() {
 }
     return (
       <Card
-        bgcolor="light"
+        bgcolor="warning"
         header="Login"
         txtcolor="black"
         status={status}
         body={
           show ? (
             <>
-              Login Email
+              Login Email:
               <br />
-              <input
-                type="input"
-                className="form-control"
-                id="emailinput"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => {
+              <input type="input" className="form-control" id="emailinput" placeholder="Enter email" value={email} onChange={(e) => {
                   setEmail(e.currentTarget.value);
                 }}
               />
               <br />
-              Password
+              Password:
               <br />
-              <input
-                type="password"
-                className="form-control"
-                id="passwordinput"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => {
+              <input type="password" className="form-control" id="passwordinput" placeholder="Enter password" value={password} onChange={(e) => {
                   setPassword(e.currentTarget.value);
                 }}
               />
               <br />
               <input
-                type="submit"
-                className="btn btn-light text-black-100"
-                id="firebase-submit-button"
-                onClick={firebaseAuthentication}
-                value="Login"
+                type="submit" className="btn btn-light text-black-100" id="firebase-submit-button" onClick={firebaseAuthentication} value="Login" 
               />
-                          <br />
+              <br /> 
+              <br />
               <input
-                type="submit"
-                className="btn btn-light text-black-100"
-                id="googlelogin"
-                onClick={googleLogin}
-                value="Google Login"
+                type="submit" className="btn btn-light text-black-100" id="googlelogin" onClick={googleLogin} value="Google Login" 
               />
   
             </>
