@@ -1,12 +1,11 @@
-
 function Withdraw() {
   const [withdraw, setWithdraw] = React.useState("");
   const [balance, setBalance] = React.useState(0);
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
   const ctx = React.useContext(UserContext);
-  let userBalance = ctx.users[ctx.users.length - 1].balance;
-  let userName = ctx.users[ctx.users.length - 1].name;
+  let userBalance = ctx.users[0].balance;
+  let userName = ctx.users[0].name;
 
   function validate(number) {
     if (isNaN(number) || number < 0) {
@@ -33,9 +32,25 @@ function Withdraw() {
     setBalance(userBalance - amount);
     setStatus("");
 
-    ctx.users[ctx.users.length - 1].balance -= Number(amount);
+    ctx.users[0].balance -= Number(amount);
     setShow(false);
+
+    fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
+    .then(response => response.text())
+    .then(text => {
+      try {
+        const data = JSON.parse(text);
+        setStatus(JSON.stringify(data.amount));
+        console.log('JSON:', data);
+      } catch(err) {
+        props.setStatus('Withdrawal failed')
+        console.log('err:', text);
+      }
+    });
+  
+
   }
+
 
   function clearForm() {
     setWithdraw("");
@@ -77,6 +92,7 @@ function Withdraw() {
         ) : (
           <>
             <h5>Success!</h5>
+            <h4>Current Balance: $ {userBalance}</h4>
             <button type="submit" className="btn btn-dark" onClick={clearForm}>
               Make Another Withdrawal
             </button>

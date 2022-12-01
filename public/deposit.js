@@ -1,12 +1,10 @@
-
-
 function Deposit() {
   const [deposit, setDeposit] = React.useState("");
   const [balance, setBalance] = React.useState(0);
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
   const ctx = React.useContext(UserContext);
-  const [users, setUsers] = React.useState([]);
+  //const [users, setUsers] = React.useState([]);
   let userBalance = ctx.users[0].balance;
   let userName = ctx.users[0].name;
 
@@ -93,6 +91,7 @@ console.log("before");
         ) : (
           <>
             <h5>Success!</h5>
+            <h4>Current Balance: $ {userBalance}</h4>
             <button type="submit" className="btn btn-dark" onClick={clearForm}>
               Make Another Deposit
             </button>
