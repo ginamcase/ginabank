@@ -23,13 +23,13 @@ function Deposit() {
     setBalance(userBalance + amount);
     setStatus("");
 
-    ctx.users[0].balance += Number(amount);
+    ctx.user.balance += Number(amount);
     setShow(false);
 console.log("before");
     
 //...
 
-  fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
+  fetch(`/account/update/${ctx.user.email}/${ctx.user.balance}`)
   .then(response => response.text())
   .then(text => {
     try {
