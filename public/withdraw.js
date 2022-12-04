@@ -4,8 +4,8 @@ function Withdraw() {
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
   const ctx = React.useContext(UserContext);
-  let userBalance = ctx.users[0].balance;
-  let userName = ctx.users[0].name;
+  let userBalance = ctx.user.balance;
+  let userName = ctx.user.name;
 
   function validate(number) {
     if (isNaN(number) || number < 0) {
@@ -32,10 +32,10 @@ function Withdraw() {
     setBalance(userBalance - amount);
     setStatus("");
 
-    ctx.users[0].balance -= Number(amount);
+    ctx.user.balance -= Number(amount);
     setShow(false);
 
-    fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
+    fetch(`/account/update/${ctx.user.email}/${ctx.user.balance}`)
     .then(response => response.text())
     .then(text => {
       try {
