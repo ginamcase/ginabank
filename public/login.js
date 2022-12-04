@@ -95,10 +95,10 @@ function Login() {
             }
             else
             {
-              ctx.users[0].name = data.name;
-              ctx.users[0].email = data.email;
-              ctx.users[0].password = data.password;
-              ctx.users[0].balance = data.balance;
+              ctx.users[ctx.users.length - 1].name = data.name;
+              ctx.users[ctx.users.length - 1].email = data.email;
+              ctx.users[ctx.users.length - 1].password = data.password;
+              ctx.users[ctx.users.length - 1].balance = data.balance;
               setShow(false);
               let activeuser = document.getElementById('activeuser');
               activeuser.innerText = data.email;
