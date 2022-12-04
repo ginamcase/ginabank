@@ -9,7 +9,6 @@ function AllData(){
    fetch('/account/all')
      .then(response => response.json())
      .then(data => {
-       console.log('last user created: ', data[data.length - 1]); 
        setData(JSON.stringify(data));
        setUsers(data);
      })

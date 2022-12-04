@@ -4,7 +4,7 @@ function Deposit() {
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState("");
   const ctx = React.useContext(UserContext);
-  //const [users, setUsers] = React.useState([]);
+  const [users, setUsers] = React.useState([]);
   let userBalance = ctx.users[0].balance;
   let userName = ctx.users[0].name;
 
@@ -27,14 +27,8 @@ function Deposit() {
     setShow(false);
 console.log("before");
     
-  // React.useEffect(() => {
-  //   fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setUsers(data);
-  //       console.log("after");
-  //     });
-  // }, []);
+//...
+
   fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
   .then(response => response.text())
   .then(text => {
@@ -101,3 +95,15 @@ console.log("before");
     />
   );
 }
+
+
+
+
+  // React.useEffect(() => {
+  //   fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setUsers(data);
+  //       console.log("after");
+  //     });
+  // }, []);
