@@ -5,8 +5,8 @@ function Deposit() {
   const [status, setStatus] = React.useState("");
   const ctx = React.useContext(UserContext);
   const [users, setUsers] = React.useState([]);
-  let userBalance = ctx.users[0].balance;
-  let userName = ctx.users[0].name;
+  let userBalance = ctx.user.balance;
+  let userName = ctx.user.name;
 
 
   function validate(number) {
