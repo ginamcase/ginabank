@@ -36,10 +36,10 @@ function Login() {
           }
           if (data.response.redirected)
           {
-            ctx.users[0].name = data.name;
-            ctx.users[0].email = data.email;
-            ctx.users[0].password = data.password;
-            ctx.users[0].balance = data.balance;
+            ctx.user.name = data.name;
+            ctx.user.email = data.email;
+            ctx.user.password = data.password;
+            ctx.user.balance = data.balance;
             let activeuser = document.getElementById('activeuser');
             activeuser.innerText = data.email;
             setShow(false);
