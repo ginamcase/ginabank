@@ -143,8 +143,8 @@ function Login() {
                 <img
                   src="googlebutton.png"
                   alt="Responsive image"
-                  height="15em"
-                  width="59em"
+                  // height="15em"
+                  // width="59em"
                 ></img>
                {/* &nbsp; Sign in with Google */}
               </button>              
