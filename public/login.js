@@ -139,7 +139,7 @@ function Login() {
               {/* <input
                 type="submit" className="btn btn-light text-black-100" id="googlelogin" onClick={googleLogin} value="Google Login" 
               /> */}
-              <button type="submit" className="btn btn-dark" onClick={googleLogin}>
+              <button type="submit" onClick={googleLogin}>
                 <img
                   src="googlebutton.png"
                   alt="Responsive image"
