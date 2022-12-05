@@ -35,7 +35,7 @@ function Login() {
             console.log(data.error);
             setStatus('Error: ' + data.error);
           }
-          if (data.response.redirected)
+          if (data.response)
           {
             ctx.user.name = data.name;
             ctx.user.email = data.email;
