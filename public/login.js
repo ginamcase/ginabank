@@ -10,7 +10,8 @@ function Login() {
     var provider = new firebase.auth.GoogleAuthProvider(); 
   
     function googleLogin () {
-      firebase.auth()
+      firebase
+      .auth()
       .signInWithPopup(provider)
       .then((result) => {
   
