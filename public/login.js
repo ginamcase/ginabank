@@ -29,7 +29,7 @@ function Login() {
   
         (async () => {
           const url = `/account/findOne/${user.email}`;
-          var res = await fetch(url, { method: 'get'});
+          var res = await fetch(url, { method: 'GET'});
           var data = await res.json();
           if (data.error) {
             console.log(data.error);
@@ -49,19 +49,17 @@ function Login() {
           else
           {
             console.log(data.response);
-            fetch(`/account/create/${user.displayName}/${user.email}/${credential}`, {
+            fetch(`/account/create/${user.displayName}/${user.email}/dummy`, {
               method: 'POST'})
               .then((data) => console.log(data))
             setShow(false);
-          
-            // let activeuser = document.getElementById('activeuser');
-            // activeuser.innerText = data.email;
+            ctx.user.name = data.name;
+            ctx.user.email = data.email;
+            ctx.user.password = data.password;
+            ctx.user.balance = 0;
           }
         })();
   
-        fetch(`/account/create/${user.displayName}/${user.email}/${credential}`, {
-          method: 'POST'})
-          .then((data) => console.log(data))
         
         
       }).catch((error) => {

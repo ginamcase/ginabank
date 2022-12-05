@@ -5,12 +5,13 @@ function AllData(){
   const [users, setUsers] = React.useState([]);
  
   React.useEffect(() => {
-   //fetch all acounts from API
+   //fetch all accounts from API
    fetch('/account/all')
      .then(response => response.json())
      .then(data => {
        setData(JSON.stringify(data));
        setUsers(data);
+       console.log(data);
      })
   }, []);
 
