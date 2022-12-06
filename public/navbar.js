@@ -1,20 +1,8 @@
 function NavBar(props){
   const ctx = React.useContext(UserContext); 
- // let user = ctx.user;
   const [show, setShow] = React.useState(true);
   const [status, setStatus] = React.useState('');
-  
-// function handleLogout() {
-//   firebase.auth().signOut();
-//   setShow(false);
-//   user.email = null;
-//   user.password = null;
-//   user.balance = null;
-//   user.name = null;
   const activeuser = document.getElementById('activeuser');
-  // activeuser.innerText = "Log In";
-
-// }
 
 function handleLogout() {
   firebase.auth().signOut()
@@ -34,8 +22,6 @@ function handleLogout() {
       })
  }
 
-
-
   return(
     <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,7 +36,6 @@ function handleLogout() {
         aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
-      
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
        
@@ -73,10 +58,6 @@ function handleLogout() {
           <li className="nav-item" data-toggle="tooltip" title="Make a Withdrawal">
             <a className="nav-link" href="#/withdraw/">Withdraw</a>
           </li>
-
-          {/* <li className="nav-item" data-toggle="tooltip" title="Check your Balance">
-            <a className="nav-link"   href="#/balance/">Balance</a>
-          </li> */}
 
           <li className="nav-item" data-toggle="tooltip" title="View All Data">
             <a className="nav-link" href="#/alldata/">AllData</a>

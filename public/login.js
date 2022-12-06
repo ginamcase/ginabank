@@ -34,7 +34,7 @@ function Login() {
             console.log(data.error);
             setStatus('Error: ' + data.error);
           }
-          if (data.response.redirected)  //take out redirected???
+          if (data.response)  //take out redirected???
           {
             ctx.user.name = data.name;
             ctx.user.email = data.email;

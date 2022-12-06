@@ -20,7 +20,7 @@ function Deposit() {
 
   function handleDeposit(amount) {
     if (!validate(amount)) return;
-    setBalance(userBalance + amount); //is this why its adding balance twice?
+    setBalance(userBalance + amount); //is this why its adding balance twice?  or maybe on dal.js?
     setStatus("");
 
     ctx.user.balance += Number(amount);  //is this why its adding balance twice?

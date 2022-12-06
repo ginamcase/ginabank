@@ -47,10 +47,7 @@ function Withdraw() {
         console.log('err:', text);
       }
     });
-  
-
   }
-
 
   function clearForm() {
     setWithdraw("");

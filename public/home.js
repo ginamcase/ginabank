@@ -1,5 +1,3 @@
-
-
 function Home() {
   return (
     <Card
@@ -17,7 +15,6 @@ function Home() {
             alt="Banking picture"
           />
           <br />
-          
         </>
       }
     />

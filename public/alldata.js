@@ -15,19 +15,6 @@ function AllData(){
      })
   }, []);
 
-// function AllData() {
-//   const ctx = React.useContext(UserContext);
-//   const [users, setUsers] = React.useState([]);
-
-//   React.useEffect(() => {
-//     fetch("/account/all")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setUsers(data);
-//       });
-//   }, []);
-
-
   const displayUsers = users?.map((user) => {
     return (
       <tr key={user}>
