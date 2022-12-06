@@ -45,15 +45,16 @@ function CreateAccount() {
 
        const url = `/account/create/${name}/${email}/${password}`;
        (async () => {
-        var res = await fetch(url, {method: 'POST', 
-        mode: 'cors' });
-        var data = await res.json();
-        console.log(data);
-        ctx.user.email = email;
-        ctx.user.balance = 0;
-        let activeuser = document.getElementById('activeuser');
-        activeuser.innerText = ctx.user.email;
+          var res = await fetch(url, {method: 'POST', 
+          mode: 'cors' });
+          var data = await res.json();
+          console.log(data);
+          ctx.user.email = email;
+          ctx.user.balance = 0;
+          let activeuser = document.getElementById('activeuser');
+          activeuser.innerText = ctx.user.email;
    })();
+   
     setShow(false);
     setStatus('');
   }

@@ -3,7 +3,6 @@ function Login() {
     const [status, setStatus] = React.useState(false);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-  
     const ctx = React.useContext(UserContext);
     const emailinput = document.getElementById("emailinput");
     const passwordinput = document.getElementById("passwordinput");
@@ -35,7 +34,7 @@ function Login() {
             console.log(data.error);
             setStatus('Error: ' + data.error);
           }
-          if (data.response)
+          if (data.response.redirected)  //take out redirected???
           {
             ctx.user.name = data.name;
             ctx.user.email = data.email;
@@ -58,22 +57,18 @@ function Login() {
             ctx.user.password = data.password;
             ctx.user.balance = 0;
           }
+          ///SOMEWHERE in the above or down below is where I need a conditional statement so firebase will check for an existing account and only create an account for google logins that arent already in the database.  See props and methods here https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#createUserWithEmailAndPassword
         })();
   
-        
-        
       }).catch((error) => {
-        // Handle Errors hee.
+        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         // The email of the user's account used.
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-       
-
       });
-      
     }
   
     function firebaseAuthentication() {
@@ -105,8 +100,8 @@ function Login() {
           })();
             })
         .catch((e) => console.log(e.message));
-  
 }
+
     return (
       <Card
         bgcolor="warning"
@@ -135,19 +130,14 @@ function Login() {
               />
               <br /> 
               <br />
-              {/* <input
-                type="submit" className="btn btn-light text-black-100" id="googlelogin" onClick={googleLogin} value="Google Login" 
-              /> */}
               <button type="submit" onClick={googleLogin}>
                 <img
                   src="googlebutton.png"
                   alt="Responsive image"
-                  height="38"
-                  width="148em"
+                  height="75em"
+                  width="250em"
                 ></img>
-               {/* &nbsp; Sign in with Google */}
               </button>              
-  
             </>
           ) : (
             <>

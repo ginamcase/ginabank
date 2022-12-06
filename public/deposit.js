@@ -20,14 +20,12 @@ function Deposit() {
 
   function handleDeposit(amount) {
     if (!validate(amount)) return;
-    setBalance(userBalance + amount);
+    setBalance(userBalance + amount); //is this why its adding balance twice?
     setStatus("");
 
-    ctx.user.balance += Number(amount);
+    ctx.user.balance += Number(amount);  //is this why its adding balance twice?
     setShow(false);
 console.log("before");
-    
-//...
 
   fetch(`/account/update/${ctx.user.email}/${ctx.user.balance}`)
   .then(response => response.text())
@@ -41,7 +39,6 @@ console.log("before");
       console.log('err:', text);
     }
   });
-
 }
 
   function clearForm() {
@@ -97,13 +94,3 @@ console.log("before");
 }
 
 
-
-
-  // React.useEffect(() => {
-  //   fetch(`/account/update/${ctx.users[0].email}/${ctx.users[0].balance}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setUsers(data);
-  //       console.log("after");
-  //     });
-  // }, []);
